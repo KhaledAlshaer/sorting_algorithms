@@ -2,6 +2,19 @@
 
 
 /**
+ * swap- Swaping two int
+ * @first: the first int
+ * @second: the second int
+ * Return: Nothing
+*/
+void swap(int *first, int *second)
+{
+	int temp = *first;
+	*first = *second;
+	*second = temp;
+}
+
+/**
  * lumoto- the partitioning function for quick_sort()
  * @left: the left index
  * @right: the right index

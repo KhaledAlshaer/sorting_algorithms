@@ -21,7 +21,6 @@ typedef struct listint_s
 
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
-void swap(int *first, int *second);
 int lumoto(int *arr, int size, int left, int right);
 void quick_sort_helper(int *arr, int size, int left, int right);
 
