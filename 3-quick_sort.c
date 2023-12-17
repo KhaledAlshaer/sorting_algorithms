@@ -31,7 +31,7 @@ int lumoto(int *arr, int size, int left, int right)
 
 	for (j = left; j < right; j++)
 	{
-		if (arr[j] < pivot_val)
+		if (arr[j] <= pivot_val)
 		{
 			if (arr[i] != arr[j])
 			{
