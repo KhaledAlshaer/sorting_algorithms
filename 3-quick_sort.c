@@ -16,46 +16,58 @@ void swap(int *first, int *second)
 
 /**
  * lumoto- the partitioning function for quick_sort()
+ * @arr: the array to sort
+ * @size: size of the array
  * @left: the left index
  * @right: the right index
- * Rerurn: the index of the pivot
+ * Return: move the Pivot to it's right index\
+	& the index of the pivot
 */
 int lumoto(int *arr, int size, int left, int right)
 {
-    int pivot_val = arr[right];
-    int i = left - 1;
-    int j;
+	int pivot_val = arr[right];
+	int i = left;
+	int j;
 
-    for(j = left; j <= right - 1; j++)
-    {
-        if (arr[j] <= pivot_val)
-        {
-            i++;
-            swap(&arr[i], &arr[j]);
-        }
-    }
+	for (j = left; j < right; j++)
+	{
+		if (arr[j] < pivot_val)
+		{
+			if (arr[i] != arr[j])
+			{
+				swap(&arr[i], &arr[j]);
+				print_array(arr, size);
+			}
+			i++;
+		}
+	}
 
-    swap(&arr[i+1], &arr[right]);
-    print_array(arr, size);
-    return (i+1);
+	if (arr[i] != arr[right])
+	{
+		swap(&arr[i], &arr[right]);
+		print_array(arr, size);
+	}
+	return (i);
 }
 
 
 /**
- * quick_sort- Quick Sort Algo (Lomuto’s Partition Scheme)
- * @array: the array to sort
- * @left: the first index
- * @right: the last index
+ * quick_sort_helper- Quick Sort Algo (Lomuto’s Partition Scheme)
+ * @arr: the array to sort
+ * @size: the size of the array
+ * @low: the first index
+ * @high: the last index
  * Return: Nothing
 */
-void quick_sort_helper(int *arr, int size, int left, int right)
+void quick_sort_helper(int *arr, int size, int low, int high)
 {
-    if (left < right)
-    {
-        int pivot_idx = lumoto(arr, size, left, right);
-        quick_sort_helper(arr, size, left, pivot_idx - 1);
-        quick_sort_helper(arr, size, pivot_idx + 1, right);
-    }
+	if (low < high)
+	{
+		int pivot_idx = lumoto(arr, size, low, high);
+
+		quick_sort_helper(arr, size, low, pivot_idx - 1);
+		quick_sort_helper(arr, size, pivot_idx + 1, high);
+	}
 }
 
 
@@ -64,34 +76,11 @@ void quick_sort_helper(int *arr, int size, int left, int right)
  * @array: the array to sort
  * @size: the size of the array
  * Return: Nothing
+*/
 void quick_sort(int *array, size_t size)
 {
-    int left = 0;
-    int right = size - 1;
-    if (!array || size < 2)
-        return;
-    quick_sort_helper(array, size,left, right);
-}
-*/
+	if (!array || size == 0)
+		return;
 
-void quick_sort(int *array, size_t size) {
-    int pivot;
-    size_t i, j;
-
-    if (!array || size < 2)
-        return;
-
-        pivot = array[size - 1];
-        i = 0; 
-    for (j = 0; j < size - 1; j++) {
-        if (array[j] <= pivot) {
-        swap(&array[i], &array[j]); 
-            i++;
-        }
-    }
-
-    swap(&array[i], &array[size - 1]); 
-
-    quick_sort(array, i); 
-    quick_sort(&array[i + 1], size - i - 1);
+	quick_sort_helper(array, size, 0, size - 1);
 }
