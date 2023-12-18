@@ -26,10 +26,9 @@ void swap(int *first, int *second)
 int lumoto(int *arr, int size, int left, int right)
 {
 	int pivot_val = arr[right];
-	int i = left;
-	int j;
+	int i = left, j = left;
 
-	for (j = left; j < right; j++)
+	for (; j < right; j++)
 	{
 		if (arr[j] <= pivot_val)
 		{
