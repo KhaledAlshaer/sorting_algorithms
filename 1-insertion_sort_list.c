@@ -8,22 +8,23 @@
 */
 void swap_nodes(listint_t *f, listint_t *s)
 {
-	if (f->prev)
-	{
-		f->prev->next = s;
-	}
-
-	if (s->next)
-	{
-		s->next->prev = f;
-	}
 	if (f && s)
 	{
+		if (f->prev)
+		{
+			f->prev->next = s;
+		}
+
+		if (s->next)
+		{
+			s->next->prev = f;
+		}
+
 		f->next = s->next;
 		s->prev = f->prev;
 		s->next = f;
 		f->prev = s;
-	}
+	}	
 }
 
 /**
