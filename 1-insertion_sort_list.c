@@ -34,7 +34,7 @@ void swap_nodes(listint_t *f, listint_t *s)
 */
 void insertion_sort_list(listint_t **list)
 {
-	int i = 1, j, key;
+	int j, key;
 	listint_t *current;
 
 	if (list && *list)
@@ -44,7 +44,7 @@ void insertion_sort_list(listint_t **list)
 		while (current)
 		{
 			key = current->n;
-			j = i - 1;
+			j = current->prev ? current->prev->n : 0;
 
 			while (j >= 0 && (*list)[j].n > key)
 			{
@@ -52,7 +52,7 @@ void insertion_sort_list(listint_t **list)
 				print_list(*list);
 				j--;
 			}
-			i++;
+			
 			current = current->next;
 		}
 	}
