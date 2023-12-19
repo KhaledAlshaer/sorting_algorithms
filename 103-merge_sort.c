@@ -2,7 +2,7 @@
 
 /**
  * merge- merging after the recursion\
- * Disclamer: this implementation doesnot meet the ALX requitmentsb\
+ * DISCLAIMER: this implementation doesnot meet the ALX requitmentsb\
  * but it do the trick
  * @array: the original array
  * @size: the size of it
