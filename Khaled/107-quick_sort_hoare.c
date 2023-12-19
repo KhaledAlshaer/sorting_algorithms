@@ -1,9 +1,7 @@
 #include "sort.h"
 
 /**
- * swap- Swaping two int\
- * Disclamer: this implementation doesnot meet the ALX requitmentsb\
- * but it do the trick
+ * swap- Swaping two int
  * @first: the first int
  * @second: the second int
  * Return: Nothing

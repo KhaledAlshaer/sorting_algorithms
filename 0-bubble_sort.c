@@ -1,39 +1,37 @@
 #include "sort.h"
 
-/**
- *swap - this is the function
- *@f: this is a vraiable
- *@s: this is a vraiable
- *Return: return 0
-*/
-void swap(int *f, int *s)
-{
-	int temp = *f;
 
-	*f = *s;
-	*s = temp;
+/**
+ * swap- Swaping two int
+ * @first: the first int
+ * @second: the second int
+ * Return: Nothing
+*/
+void swap(int *first, int *second)
+{
+	int temp = *first;
+	*first = *second;
+	*second = temp;
 }
 
 /**
- *bubble_sort - this is the function
- *@array: this is a vraiable
- *@size: this is a vraiable
- *Return: return 0
+ * bubble_sort- Bubule Sort Algorithm
+ * @array: the array
+ * @size: the size of the array
+ * Return: Nothing
 */
 void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
 
-	if (!array)
-	{
+	if (!array || size == 0)
 		return;
-	}
 
 	for (i = 0; i < size; i++)
 	{
 		for (j = 0; j < size - 1; j++)
 		{
-			if (array[j] > array[j + 1])
+			if (array[j + 1] && array[j] > array[j + 1])
 			{
 				swap(&array[j], &array[j + 1]);
 				print_array(array, size);

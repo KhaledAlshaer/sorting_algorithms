@@ -1,96 +1,81 @@
 #include "sort.h"
 
-/**
- *swap - this is the function
- *@f: this is a vraiable
- *@s: this is a vraiable
- *Return: return 0
-*/
-void swap_nodes(listint_t *f, listint_t *s)
-{
-	if (f && s)
-	{
-		if (f->prev)
-		{
-			f->prev->next = s;
-		}
-		if (s->next)
-		{
-			s->next->prev = f;
-		}
 
-		if (f->next != s)
-		{
-			f->next = s->next;
-			s->prev = f->prev;
-			s->next = f;
-			f->prev = s;
-		}
-		else
-		{
-			f->next = s;
-			s->prev = f;
-			s->next = f->next;
-			f->prev = s->prev;
-		}
-	}	
+/**
+ * swap_nodes- Swaping two node
+ * @first: the first node
+ * @second: the second node
+ * Return: Nothing
+*/
+void swap_nodes(listint_t *first, listint_t *second)
+{
+	if (first->prev)
+		first->prev->next = second;
+	if (second->next)
+		second->next->prev = first;
+
+	first->next = second->next;
+	second->prev = first->prev;
+	second->next = first;
+	first->prev = second;
 }
 
+
 /**
- *insertion_sort_list - this is the function
- *@list: this is a vraiable
- *Return: return 0
+ * insertion_sort- Algo for the array
+ * @arr: the array
+ * @size: the size
+ * Return: Nothing
+*/
+void insertion_sort(int *arr, int size)
+{
+	int i, j, key;
+
+	for (i = 1; i < size; i++)
+	{
+		j = i - 1;
+		key = arr[i];
+
+		while (j >= 0 && arr[j] > key)
+		{
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = key;
+	}
+}
+
+
+/**
+ * insertion_sort_list- Algo for the linked list
+ * @list: the linked list
+ * Return: Nothing
 */
 void insertion_sort_list(listint_t **list)
 {
-	int i = 1, j, key;
+	listint_t *i_ptr, *j_ptr;
 
-	if (*list && (*list)[i].next)
+	if (!list || !*list || !(*list)->next)
+		return;
+
+	i_ptr = (*list)->next;
+	while (i_ptr)
 	{
-		key = (*list)[i].n;
-		j = i-1;
+		j_ptr = i_ptr;
 
-		while ((*list)[i].n)
+		while (j_ptr && j_ptr->prev)
 		{
-			while (j >= 0 && (*list)[j].n > key)
+			if (j_ptr->prev->n > j_ptr->n)
 			{
-				swap_nodes(&(*list)[j], &(*list)[j + 1]);
+				swap_nodes(j_ptr->prev, j_ptr);
+				if (!j_ptr->prev)
+					*list = j_ptr;
 				print_list(*list);
-				j--;
 			}
-			i++;
+			else
+				break;
 		}
+
+		i_ptr = i_ptr->next;
 	}
 }
-
-
-
-
-/**
- * void insertion_sort_list(listint_t **list)
-{
-	int j, key;
-	listint_t *current;
-
-	if (list && *list)
-	{
-		current = (*list)->next;
-
-		while (current)
-		{
-			key = current->n;
-			j = current->prev ? current->prev->n : 0;
-
-			while (j >= 0 && (*list)[j + 1].n > key)
-			{
-				swap_nodes(&(*list)[j], current);
-				print_list(*list);
-				j--;
-			}
-			
-			current = current->next;
-		}
-	}
-}
-*/
-
