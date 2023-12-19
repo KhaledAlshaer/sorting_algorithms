@@ -21,14 +21,16 @@ typedef struct listint_s
 
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
-int lumoto(int *arr, int size, int left, int right);
+
 void quick_sort_helper(int *arr, int size, int left, int right);
+void quick_sort_hoare(int *array, size_t size);
+
 
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
-void quick_sort(int *array, size_t size);
+int lumoto(int *arr, int size, int left, int right);
 void merge_sort(int *array, size_t size);
-
+void quick_sort(int *array, size_t size);
 
 #endif
