@@ -33,8 +33,7 @@ void swap_nodes(listint_t *f, listint_t *s)
 */
 void insertion_sort_list(listint_t **list)
 {
-	int i = 1, j;
-	int key;
+	int i = 1, j, key;
 
 	if (list)
 	{
