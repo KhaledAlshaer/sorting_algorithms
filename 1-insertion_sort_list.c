@@ -50,11 +50,15 @@ void insertion_sort_list(listint_t **list)
 		key = (*list)[i].n;
 		j = i-1;
 
-		while (j >= 0 && (*list)[j].n > key)
+		while ((*list)[i].n)
 		{
-			swap_nodes(&(*list)[j], &(*list)[j + 1]);
-			print_list(*list);
-			j--;
+			while (j >= 0 && (*list)[j].n > key)
+			{
+				swap_nodes(&(*list)[j], &(*list)[j + 1]);
+				print_list(*list);
+				j--;
+			}
+			i++;
 		}
 	}
 }
