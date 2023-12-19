@@ -43,6 +43,28 @@ void swap_nodes(listint_t *f, listint_t *s)
 */
 void insertion_sort_list(listint_t **list)
 {
+	int i = 1, j, key;
+
+	if (*list && (*list)[i].next)
+	{
+		key = (*list)[i].n;
+		j = i-1;
+
+		while (j >= 0 && (*list)[j].n > key)
+		{
+			swap_nodes(&(*list)[j], &(*list)[j + 1]);
+			print_list(*list);
+			j--;
+		}
+	}
+}
+
+
+
+
+/**
+ * void insertion_sort_list(listint_t **list)
+{
 	int j, key;
 	listint_t *current;
 
@@ -66,3 +88,5 @@ void insertion_sort_list(listint_t **list)
 		}
 	}
 }
+*/
+
