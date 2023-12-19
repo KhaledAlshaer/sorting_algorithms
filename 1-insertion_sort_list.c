@@ -41,7 +41,7 @@ void insertion_sort_list(listint_t **list)
 	{
 		current = (*list)->next;
 
-		while (list[i])
+		while (current)
 		{
 			key = current->n;
 			j = i - 1;
@@ -53,6 +53,7 @@ void insertion_sort_list(listint_t **list)
 				j--;
 			}
 			i++;
+			current = current->next;
 		}
 	}
 }
