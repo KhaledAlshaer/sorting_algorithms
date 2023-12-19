@@ -53,29 +53,29 @@ void insertion_sort(int *arr, int size)
 */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *i, *j;
+	listint_t *i_ptr, *j_ptr;
 
 	if (!list || !*list || !(*list)->next)
 		return;
 
-	i = (*list)->next;
-	while (i)
+	i_ptr = (*list)->next;
+	while (i_ptr)
 	{
-		j = i;
+		j_ptr = i_ptr;
 
-		while (j && j->prev)
+		while (j_ptr && j_ptr->prev)
 		{
-			if (j->prev->n > j->n)
+			if (j_ptr->prev->n > j_ptr->n)
 			{
-				swap_nodes(j->prev, j);
-				if (!j->prev)
-					*list = j;
+				swap_nodes(j_ptr->prev, j_ptr);
+				if (!j_ptr->prev)
+					*list = j_ptr;
 				print_list(*list);
 			}
 			else
 				break;
 		}
 
-		i = i->next;
+		i_ptr = i_ptr->next;
 	}
 }
